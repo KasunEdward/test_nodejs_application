@@ -1,7 +1,7 @@
 #!/bin/bash
-sudo chmod -R 777 /home/ubuntu/nodejs-express
+sudo chmod -R 777 /var/www/html/test_nodejs_application
 #navifate into our worling directory where we have all our github files
-cd /home/ubuntu/nodejs-express
+cd /var/www/html/test_nodejs_application
 
 #add npm and node to path
 export NVM_DIR="$HOME/.nvm"
