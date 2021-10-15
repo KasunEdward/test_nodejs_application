@@ -1,12 +1,13 @@
 var mysql = require('mysql');
 var migration = require('mysql-migrations');
+const dbConfig = require('./config/db.config');
 
 var connection = mysql.createPool({
     connectionLimit: 10,
-    host: 'localhost',
-    user: 'root',
-    password: 'Kasun@123',
-    database: 'test_nodejs_db'
+    host: dbConfig.HOST,
+    user: dbConfig.USER,
+    password: dbConfig.PASSWORD,
+    database: dbConfig.DATABASE
 });
 
 migration.init(connection, __dirname + '/migrations', function(){
