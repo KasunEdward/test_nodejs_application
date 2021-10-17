@@ -1,5 +1,6 @@
 const Customer = require('../models/customer.js');
 
+// create new customer
 exports.create = (req, res) => {
     if(!req.body){
         res.status(400).send({
@@ -26,5 +27,22 @@ exports.create = (req, res) => {
             res.status(201).send(data);
         }
     });
+};
 
+// get all customers
+exports.getAll = (req, res) => {
+    try{
+        Customer.getAll((err, data) => {
+            if(err){
+                res.status(500).send({
+                    message: err.message || 'get customers error'
+                })
+            }else{
+                res.status(200).send(data);
+            }
+        })
+
+    }catch(e){
+        throw new Error(ex.toString());
+    }
 }
