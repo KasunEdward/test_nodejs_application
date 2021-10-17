@@ -9,5 +9,8 @@ router.post('/', customers.create );
 // get customers list
 router.get('/', customers.getAll)
 
+// update customer
+router.put('/:customerId', customers.update)
+
 
 module.exports = router;

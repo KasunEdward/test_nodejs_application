@@ -46,3 +46,34 @@ exports.getAll = (req, res) => {
         throw new Error(ex.toString());
     }
 }
+
+// update customer
+exports.update = (req, res) => {
+    try{
+
+        if(!req.body){
+            res.status(400).send({
+                message: 'empty content'
+            });
+        }
+
+        Customer.update(req.params.customerId, new Customer(req.body), (err, data) => {
+            if(err){
+                if (err.kind === "not_found") {
+                    res.status(404).send({
+                      message: `Not found Customer with id ${req.params.customerId}.`
+                    });
+                  } else {
+                    res.status(500).send({
+                      message: "Error updating Customer with id " + req.params.customerId
+                    });
+                  }
+            }else{
+                res.status(200).send(data);
+            }
+        })
+
+    }catch(e){
+        throw new Error(ex.toString());
+    }
+}
