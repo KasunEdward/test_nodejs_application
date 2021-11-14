@@ -27,6 +27,9 @@ var server = http.createServer(app);
 
 server.listen(port);
 server.on('error', onError);
+process.on('uncaughtException', function (err) {
+  console.log('uncaughtException:',  err);
+});
 server.on('listening', onListening);
 
 /**
